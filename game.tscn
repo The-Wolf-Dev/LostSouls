@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4mh158vwyja"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_atk61"]
+[ext_resource type="Texture2D" uid="uid://hq2lmeu80r2w" path="res://Assets/Background/game_background.jpg" id="1_eiatu"]
+[ext_resource type="PackedScene" uid="uid://cwsxf3uqh0ssc" path="res://Player/player.tscn" id="2_bms2u"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_atk61")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_eiatu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_bms2u")]
+position = Vector2(232, -73)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Water" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1918, 117, 1866, 135, 1856, 187, 1764, 241, 1754, 317, 1662, 353, 1642, 403, 1556, 449, 1536, 525, 1450, 553, 1440, 625, 1380, 657, 1272, 647, 1238, 667, 1240, 711, 1134, 773, 1132, 829, 1040, 867, 1028, 921, 982, 953, -152, 965, -202, 937, -218, 867, -270, 847, -260, 981, -480, 983, -474, 851, -774, 859, -822, 827, -838, 765, -936, 713, -942, 663, -1034, 617, -1052, 555, -1144, 519, -1142, 353, -1190, 327, -1306, 335, -1346, 309, -1354, 243, -1404, 225, -1486, 229, -1542, 199, -1554, -61, -1654, -103, -1664, -275, -1758, -305, -1762, -483, -1862, -525, -1866, -1081, -1918, -1079, -1920, 1079, 1918, 1081)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-28, 73, -28, 82, -21, 94, 4, 94, 13, 83, 14, 70, 3, 62, -16, 61)
+
+[node name="Menu" type="Button" parent="."]
+offset_left = 1660.0
+offset_top = -1037.0
+offset_right = 1860.0
+offset_bottom = -937.0
+theme_override_font_sizes/font_size = 36
+text = "Меню
+"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

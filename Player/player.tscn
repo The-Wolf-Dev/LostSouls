@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwsxf3uqh0ssc"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_whrpi"]
+[ext_resource type="Texture2D" uid="uid://c81t2ge83o4a8" path="res://Assets/Sprites/knight.png" id="2_wopts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xajvr"]
+size = Vector2(96, 27)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_whrpi")
+speed = 500
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 38.5)
+shape = SubResource("RectangleShape2D_xajvr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(40, -41)
+scale = Vector2(2, 2)
+texture = ExtResource("2_wopts")
