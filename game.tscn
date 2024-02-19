@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy4mh158vwyja"]
+[gd_scene load_steps=3 format=3 uid="uid://dy4mh158vwyja"]
+
+[ext_resource type="PackedScene" uid="uid://cqlqlq4dv06h2" path="res://Characters/player.tscn" id="1_4e1fp"]
 
 [sub_resource type="GDScript" id="GDScript_y2dug"]
 script/source = "extends Node2D
-
-
-
-func _on_menu_pressed():
-	get_tree().change_scene_to_file(\"res://menu.tscn\") # Replace with function body.
 "
 
 [node name="Game" type="Node2D"]
 script = SubResource("GDScript_y2dug")
+
+[node name="Player" parent="." instance=ExtResource("1_4e1fp")]
+position = Vector2(219, 139)
