@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
-@export var move_speed = 100
-@export var start_position = Vector2(0, 1)
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+
+
+@export var move_speed = 100
+@export var start_position = Vector2(0, 1)
+
 
 func _ready():
 	update_animation(start_position)
@@ -29,3 +32,14 @@ func update_state_machine():
 		state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
+
+func save():
+	var data_to_save = {
+		"file_path" : get_scene_file_path(),
+		"parent_path" : get_parent().get_path(),
+		"position_x" : position.x,
+		"position_y" : position.y,
+	}
+	
+	return data_to_save
+

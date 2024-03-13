@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://2wmc7xg8wkow"]
+
+[ext_resource type="Script" path="res://Windows/PauseMenu.gd" id="1_poxgk"]
+[ext_resource type="Texture2D" uid="uid://dylrdm4keq383" path="res://Assets/The Fan-tasy Tileset/Beginning Fields.png" id="2_gwu3t"]
+[ext_resource type="FontFile" uid="uid://brd03th58pauo" path="res://Font/Milonga-Regular.ttf" id="3_y5is2"]
+[ext_resource type="Theme" uid="uid://dr47g3nytmxkg" path="res://Themes/MainTheme.tres" id="4_sjqqp"]
+[ext_resource type="PackedScene" uid="uid://bmpde782ph752" path="res://Windows/SettingsMenu.tscn" id="5_sbp4r"]
+[ext_resource type="PackedScene" uid="uid://mfrb8ssc1gnj" path="res://Windows/SavingsMenu.tscn" id="6_cyu6m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jye8g"]
+font = ExtResource("3_y5is2")
+font_size = 128
+font_color = Color(0.105882, 0.74902, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_poxgk")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_gwu3t")
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(530, 65)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Lost Souls"
+label_settings = SubResource("LabelSettings_jye8g")
+
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(530, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_sjqqp")
+text = "Resume"
+icon_alignment = 1
+
+[node name="Load" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(530, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_sjqqp")
+text = "Load"
+icon_alignment = 1
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(530, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_sjqqp")
+text = "Settings"
+icon_alignment = 1
+
+[node name="FinishGame" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(530, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_sjqqp")
+text = "Finish game"
+icon_alignment = 1
+
+[node name="QuitGame" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(530, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_sjqqp")
+text = "Quit game"
+icon_alignment = 1
+
+[node name="Pages" type="CanvasLayer" parent="."]
+
+[node name="Settings" parent="Pages" instance=ExtResource("5_sbp4r")]
+visible = false
+
+[node name="Savings" parent="Pages" instance=ExtResource("6_cyu6m")]
+visible = false
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FinishGame" to="." method="_on_finish_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="save_requested" from="Pages/Savings" to="." method="_on_savings_save_requested"]
