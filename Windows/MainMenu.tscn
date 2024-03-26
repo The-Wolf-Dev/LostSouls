@@ -74,6 +74,7 @@ icon_alignment = 1
 [node name="Pages" type="CanvasLayer" parent="."]
 
 [node name="Settings" parent="Pages" instance=ExtResource("5_cmvor")]
+layer = 2
 visible = false
 
 [node name="Savings" parent="Pages" instance=ExtResource("6_3418p")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqec7yru7wmt"]
+
+[ext_resource type="Texture2D" uid="uid://d2q5c765b8k1s" path="res://Assets/character-pack-free_version/sprite/free_character_nude.png" id="1_ajd7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53a7u"]
+size = Vector2(10, 3)
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ajd7q")
+hframes = 3
+vframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_53a7u")

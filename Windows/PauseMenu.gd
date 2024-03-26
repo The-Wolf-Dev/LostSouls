@@ -6,6 +6,12 @@ extends CanvasLayer
 
 signal save_requested(save_name : String)
 
+
+func _input(event):
+	if event.is_action_pressed("esc"):
+		resume_game()
+
+
 func _on_resume_pressed():
 	resume_game()
 
