@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://o50ohmpfmro4"]
+
+[ext_resource type="PackedScene" uid="uid://caqec7yru7wmt" path="res://Characters/simple_enemy.tscn" id="1_mo6nq"]
+[ext_resource type="Script" path="res://Characters/enemy_1_ability.gd" id="2_6tx6i"]
+[ext_resource type="Texture2D" uid="uid://dff7cocrj1300" path="res://Assets/character-pack-free_version/sprite/Mavka.png" id="2_68246"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7arhn"]
+radius = 17.0
+
+[node name="Enemy1Ability" instance=ExtResource("1_mo6nq")]
+script = ExtResource("2_6tx6i")
+health = 100
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_68246")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 7)
+
+[node name="StunArea2D" type="Area2D" parent="." index="4"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StunArea2D" index="0"]
+shape = SubResource("CircleShape2D_7arhn")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="StunArea2D" to="." method="_on_stun_area_2d_body_entered"]

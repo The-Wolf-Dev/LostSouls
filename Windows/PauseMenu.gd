@@ -1,15 +1,17 @@
 extends CanvasLayer
 
-@onready var camera2D = $"../"
 @onready var settings_menu = $Pages/Settings
 @onready var savings_menu = $Pages/Savings
 
+signal resume_pressed()
 signal save_requested(save_name : String)
 
 
 func _input(event):
 	if event.is_action_pressed("esc"):
-		resume_game()
+		if get_tree().paused and visible:
+			resume_game()
+			get_viewport().set_input_as_handled()
 
 
 func _on_resume_pressed():
@@ -21,7 +23,6 @@ func _on_quit_game_pressed():
 
 
 func _on_finish_game_pressed():
-	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Windows/MainMenu.tscn")
 
 
@@ -30,7 +31,7 @@ func _on_settings_pressed():
 
 func resume_game():
 	hide()
-	get_tree().paused = false
+	resume_pressed.emit()
 
 
 func _on_load_pressed():

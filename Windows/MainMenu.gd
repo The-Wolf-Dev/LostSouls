@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var savings_menu = $Pages/Savings
 
 func _ready():
+	#Global.resume_game()
 	savings_menu.save_disabled = true
 
 

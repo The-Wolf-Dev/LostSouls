@@ -60,7 +60,7 @@ func add_save_to_list(filename):
 	var file_creation_date = FileAccess.get_modified_time(Global.save_path + filename)
 	var save = load("res://Tech/Save.tscn").instantiate()
 	save.save_name = filename
-	save.save_date = Time.get_datetime_string_from_unix_time(file_creation_date)
+	save.save_date = Time.get_datetime_string_from_unix_time(file_creation_date).replace("T", " ")
 	save.save_selected.connect(_on_save_selected)
 	saves_list.add_child(save)
 

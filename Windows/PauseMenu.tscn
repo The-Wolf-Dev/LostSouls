@@ -15,6 +15,7 @@ outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_poxgk")
 metadata/_edit_lock_ = true
 
@@ -82,11 +83,14 @@ text = "Quit game"
 icon_alignment = 1
 
 [node name="Pages" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Settings" parent="Pages" instance=ExtResource("5_sbp4r")]
+layer = 2
 visible = false
 
 [node name="Savings" parent="Pages" instance=ExtResource("6_cyu6m")]
+layer = 2
 visible = false
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

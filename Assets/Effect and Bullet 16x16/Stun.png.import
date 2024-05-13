@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8g1ggt7cg2nk"
-path="res://.godot/imported/character_17-24.png-44904d9d8598540ac7100cdbd99d8cb0.ctex"
+uid="uid://bf6ug7i3kmjpm"
+path="res://.godot/imported/Stun.png-83809e5b0d7c923c01c149c8be3d7e94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/character-pack-free_version/sprite/character_17-24.png"
-dest_files=["res://.godot/imported/character_17-24.png-44904d9d8598540ac7100cdbd99d8cb0.ctex"]
+source_file="res://Assets/Effect and Bullet 16x16/Stun.png"
+dest_files=["res://.godot/imported/Stun.png-83809e5b0d7c923c01c149c8be3d7e94.ctex"]
 
 [params]
 

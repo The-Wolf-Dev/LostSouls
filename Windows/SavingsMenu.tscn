@@ -13,6 +13,7 @@ outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [node name="SavingsMenu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_yk0ac")
 metadata/_edit_lock_ = true
 metadata/_edit_horizontal_guides_ = []

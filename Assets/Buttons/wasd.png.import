@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dya47nf230h37"
-path="res://.godot/imported/character_1-8.png-35910c7d4b7f0e9f3bdf280250a6e15f.ctex"
+uid="uid://dfayou3n1f1a8"
+path="res://.godot/imported/wasd.png-719e2aa33d26afc25aa07503ec4f7cf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/character-pack-free_version/sprite/character_1-8.png"
-dest_files=["res://.godot/imported/character_1-8.png-35910c7d4b7f0e9f3bdf280250a6e15f.ctex"]
+source_file="res://Assets/Buttons/wasd.png"
+dest_files=["res://.godot/imported/wasd.png-719e2aa33d26afc25aa07503ec4f7cf7.ctex"]
 
 [params]
 

@@ -1,9 +1,12 @@
-[gd_scene load_steps=43 format=3 uid="uid://cqlqlq4dv06h2"]
+[gd_scene load_steps=50 format=3 uid="uid://cqlqlq4dv06h2"]
 
 [ext_resource type="Texture2D" uid="uid://m6dt7w0yjnrh" path="res://Assets/The Fan-tasy Tileset/Art/Characters/Character/Character_Walk.png" id="1_d1t6c"]
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_l54b2"]
 [ext_resource type="Texture2D" uid="uid://dac68j2084h6" path="res://Assets/The Fan-tasy Tileset/Art/Characters/Character/Character_Idle.png" id="3_r4a6d"]
 [ext_resource type="Texture2D" uid="uid://cupie67dxnk14" path="res://Assets/The Fan-tasy Tileset/Art/Characters/Character/Character_Slash.png" id="4_xg0te"]
+[ext_resource type="Texture2D" uid="uid://co2yb2v760wa4" path="res://Assets/Effect and Bullet 16x16/Fireshield.png" id="5_3fsyf"]
+[ext_resource type="Texture2D" uid="uid://dcotkfv2f4sw0" path="res://Assets/Effect and Bullet 16x16/Fireheal.png" id="5_ev4l7"]
+[ext_resource type="Texture2D" uid="uid://bf6ug7i3kmjpm" path="res://Assets/Effect and Bullet 16x16/Stun.png" id="7_h1gq1"]
 
 [sub_resource type="Animation" id="Animation_wur2h"]
 length = 0.001
@@ -42,6 +45,76 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [18]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Effects/Heal:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Effects/Fireshield:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Effects/Stun:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p515f"]
+resource_name = "fireshield"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects/Fireshield:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_w30r7"]
+resource_name = "heal"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects/Heal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_b4blk"]
@@ -190,22 +263,10 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:is_slashing")
+tracks/0/path = NodePath("Sprites/Slash:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Slash:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -218,22 +279,10 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:is_slashing")
+tracks/0/path = NodePath("Sprites/Slash:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Slash:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -246,22 +295,10 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:is_slashing")
+tracks/0/path = NodePath("Sprites/Slash:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Slash:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
@@ -274,31 +311,38 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:is_slashing")
+tracks/0/path = NodePath("Sprites/Slash:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/Slash:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_yxkj1"]
+resource_name = "stun"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effects/Stun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v5ans"]
 _data = {
 "RESET": SubResource("Animation_wur2h"),
+"fireshield": SubResource("Animation_p515f"),
+"heal": SubResource("Animation_w30r7"),
 "idle_down": SubResource("Animation_b4blk"),
 "idle_left": SubResource("Animation_ls8to"),
 "idle_right": SubResource("Animation_2y6pi"),
@@ -310,77 +354,80 @@ _data = {
 "slash_down": SubResource("Animation_q5lsf"),
 "slash_left": SubResource("Animation_d2r8d"),
 "slash_right": SubResource("Animation_282hb"),
-"slash_up": SubResource("Animation_hshpd")
+"slash_up": SubResource("Animation_hshpd"),
+"stun": SubResource("Animation_yxkj1")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q0d7s"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jo0yv"]
 animation = &"idle_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0peyb"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yy4ky"]
 animation = &"idle_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cusu5"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w3tq5"]
 animation = &"idle_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6g7by"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7fas3"]
 animation = &"idle_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_abbkr"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_q0d7s")
+blend_point_0/node = SubResource("AnimationNodeAnimation_jo0yv")
 blend_point_0/pos = Vector2(0, 1.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_0peyb")
+blend_point_1/node = SubResource("AnimationNodeAnimation_yy4ky")
 blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_cusu5")
+blend_point_2/node = SubResource("AnimationNodeAnimation_w3tq5")
 blend_point_2/pos = Vector2(0, -1.1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_6g7by")
+blend_point_3/node = SubResource("AnimationNodeAnimation_7fas3")
 blend_point_3/pos = Vector2(-1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e3a7q"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hikxw"]
 animation = &"slash_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10dj8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hgk4r"]
 animation = &"slash_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4bi3"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtmw5"]
 animation = &"slash_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xqi40"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ib4t"]
 animation = &"slash_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_r4wbw"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_e3a7q")
+blend_point_0/node = SubResource("AnimationNodeAnimation_hikxw")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_10dj8")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_u4bi3")
+blend_point_1/node = SubResource("AnimationNodeAnimation_hgk4r")
+blend_point_1/pos = Vector2(0, 1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_qtmw5")
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_xqi40")
-blend_point_3/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_8ib4t")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6fa8d"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4r6nc"]
 animation = &"move_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cjns6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tyadc"]
 animation = &"move_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_edua8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jt2wq"]
 animation = &"move_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u8j4r"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c5jhc"]
 animation = &"move_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_diitw"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_6fa8d")
+blend_point_0/node = SubResource("AnimationNodeAnimation_4r6nc")
 blend_point_0/pos = Vector2(0, 1.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_cjns6")
+blend_point_1/node = SubResource("AnimationNodeAnimation_tyadc")
 blend_point_1/pos = Vector2(0, -1.1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_edua8")
+blend_point_2/node = SubResource("AnimationNodeAnimation_jt2wq")
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_u8j4r")
+blend_point_3/node = SubResource("AnimationNodeAnimation_c5jhc")
 blend_point_3/pos = Vector2(-1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
@@ -414,7 +461,11 @@ states/Walk/position = Vector2(588, 94.5185)
 transitions = ["Walk", "End", SubResource("AnimationNodeStateMachineTransition_jwulw"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_voxt1"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_67ffe"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_hllfc"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_utj26"), "Slash", "Idle", SubResource("AnimationNodeStateMachineTransition_uicon"), "Slash", "Walk", SubResource("AnimationNodeStateMachineTransition_mtgp0"), "Walk", "Slash", SubResource("AnimationNodeStateMachineTransition_75s5x")]
 graph_offset = Vector2(-62, -95)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ki32k"]
+size = Vector2(9.58337, 25.8333)
+
+[node name="Player" type="CharacterBody2D" groups=["ForSaving", "Player"]]
+z_index = 1
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_l54b2")
 
@@ -441,7 +492,32 @@ hframes = 6
 vframes = 4
 frame = 18
 
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="Fireshield" type="Sprite2D" parent="Effects"]
+visible = false
+z_index = -1
+y_sort_enabled = true
+position = Vector2(3.57628e-07, -3.57628e-07)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_3fsyf")
+hframes = 4
+
+[node name="Heal" type="Sprite2D" parent="Effects"]
+visible = false
+position = Vector2(0, -9.16667)
+texture = ExtResource("5_ev4l7")
+hframes = 6
+
+[node name="Stun" type="Sprite2D" parent="Effects"]
+visible = false
+position = Vector2(0, -20)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_h1gq1")
+hframes = 6
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(0, -10.8333)
 polygon = PackedVector2Array(-5, 14.1667, -5, 12.1667, 5, 12.1667, 5, 14.1667, 4.16667, 14.1667, 4.16667, 15.5, -4.16667, 15.5, -4.16667, 14.1667)
 
@@ -454,19 +530,15 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_lpr17")
 anim_player = NodePath("..")
 parameters/Idle/blend_position = Vector2(0, 0)
-parameters/Slash/blend_position = Vector2(0, 0)
+parameters/Slash/blend_position = Vector2(-0.00127715, 0.0177419)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
-[node name="Timers" type="Node2D" parent="."]
-
-[node name="FireballTimer" type="Timer" parent="Timers"]
-wait_time = 10.0
-
 [node name="MarkerRotation" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(0, 0, 13.3333, 0)
 width = 0.35
 default_color = Color(1, 1, 1, 0)
@@ -474,4 +546,47 @@ default_color = Color(1, 1, 1, 0)
 [node name="Marker2D" type="Marker2D" parent="MarkerRotation"]
 position = Vector2(13, 0)
 
-[connection signal="timeout" from="Timers/FireballTimer" to="." method="_on_fireball_timer_timeout"]
+[node name="SlashArea2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlashArea2D"]
+position = Vector2(10.625, 0)
+shape = SubResource("RectangleShape2D_ki32k")
+
+[node name="ColorRect" type="ColorRect" parent="SlashArea2D/CollisionShape2D"]
+visible = false
+offset_left = -4.0
+offset_top = -13.0
+offset_right = 4.0
+offset_bottom = 13.0
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="FireballCooldownTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="FirewaveCooldownTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="FireshieldTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="FireshieldCooldownTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="HealCooldownTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="StunTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="SlashArea2D" to="." method="_on_slash_area_2d_body_entered"]
+[connection signal="timeout" from="Timers/FireballCooldownTimer" to="." method="_on_fireball_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/FirewaveCooldownTimer" to="." method="_on_firewave_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/FireshieldTimer" to="." method="_on_fireshield_timer_timeout"]
+[connection signal="timeout" from="Timers/FireshieldCooldownTimer" to="." method="_on_fireshield_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/HealCooldownTimer" to="." method="_on_heal_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/StunTimer" to="." method="_on_stun_timer_timeout"]

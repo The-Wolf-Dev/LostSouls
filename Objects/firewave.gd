@@ -1,7 +1,8 @@
 extends Node2D
 
 var direction = Vector2.DOWN
-var speed = 1
+var speed = 2
+var damage = 50
 
 
 func _physics_process(_delta):
@@ -9,7 +10,6 @@ func _physics_process(_delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Enemy":
-		body.queue_free()
-	
-	queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
+

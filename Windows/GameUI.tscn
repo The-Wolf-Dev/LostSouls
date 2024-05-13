@@ -1,0 +1,392 @@
+[gd_scene load_steps=17 format=3 uid="uid://bmdchhqojs5ci"]
+
+[ext_resource type="Texture2D" uid="uid://ck7m1myoakjjx" path="res://Assets/Effect and Bullet 16x16/Fireball_icon.png" id="1_17jpk"]
+[ext_resource type="Script" path="res://Windows/GameUI.gd" id="1_miwsy"]
+[ext_resource type="Texture2D" uid="uid://c80rpq1iqnahc" path="res://Assets/Effect and Bullet 16x16/Firewave_icon.png" id="2_cetvj"]
+[ext_resource type="Texture2D" uid="uid://b0mr1r0kftmw0" path="res://Assets/Effect and Bullet 16x16/Fireshield_icon.png" id="3_u26bj"]
+[ext_resource type="ButtonGroup" uid="uid://c35206l6sa61y" path="res://Tech/ability_button_group.tres" id="3_uhpvf"]
+[ext_resource type="Texture2D" uid="uid://bg51i8dgs1vil" path="res://Assets/Effect and Bullet 16x16/Fireheal_icon.png" id="4_vyd53"]
+[ext_resource type="Theme" uid="uid://dr47g3nytmxkg" path="res://Themes/MainTheme.tres" id="5_ujllh"]
+[ext_resource type="Texture2D" uid="uid://bdm83iy0m3mrg" path="res://Assets/Buttons/rmc.png" id="8_7qkxb"]
+[ext_resource type="Texture2D" uid="uid://dfayou3n1f1a8" path="res://Assets/Buttons/wasd.png" id="9_am1v6"]
+[ext_resource type="Texture2D" uid="uid://c4h334nxpdls3" path="res://Assets/Buttons/Shift.png" id="10_hhfi0"]
+[ext_resource type="Texture2D" uid="uid://ctfb0ekob4did" path="res://Assets/Buttons/1234.png" id="11_5vdpo"]
+[ext_resource type="Texture2D" uid="uid://cyig6s62tmcbv" path="res://Assets/Buttons/Esc.png" id="12_1p1gf"]
+[ext_resource type="Texture2D" uid="uid://by8h457xgxfkq" path="res://Assets/Buttons/F5.png" id="13_rbe2c"]
+
+[sub_resource type="Animation" id="Animation_wqsjf"]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controls:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1578, 266), Vector2(1864, 266)]
+}
+
+[sub_resource type="Animation" id="Animation_7g782"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controls:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1864, 266), Vector2(1578, 266)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ccdei"]
+_data = {
+"hide": SubResource("Animation_wqsjf"),
+"show": SubResource("Animation_7g782")
+}
+
+[node name="GameUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_miwsy")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonGroup" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Fireball" type="Button" parent="CenterContainer/ButtonGroup"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+tooltip_text = "Fireball
+Throws fireball
+Divide 50 hp when hit enemy"
+theme = ExtResource("5_ujllh")
+theme_type_variation = &"AbilityButton"
+theme_override_constants/outline_size = 0
+disabled = true
+toggle_mode = true
+button_pressed = true
+button_mask = 0
+button_group = ExtResource("3_uhpvf")
+icon = ExtResource("1_17jpk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Firewave" type="Button" parent="CenterContainer/ButtonGroup"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+tooltip_text = "Firewave
+Thorws farewave
+Divide 50 hp when hit enemies"
+theme = ExtResource("5_ujllh")
+theme_type_variation = &"AbilityButton"
+disabled = true
+toggle_mode = true
+button_mask = 0
+button_group = ExtResource("3_uhpvf")
+icon = ExtResource("2_cetvj")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Fireshield" type="Button" parent="CenterContainer/ButtonGroup"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+tooltip_text = "Fireshield
+Apply shield on hero
+Protect from enemy attack for 5 sec"
+theme = ExtResource("5_ujllh")
+theme_type_variation = &"AbilityButton"
+disabled = true
+toggle_mode = true
+button_mask = 0
+button_group = ExtResource("3_uhpvf")
+icon = ExtResource("3_u26bj")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Heal" type="Button" parent="CenterContainer/ButtonGroup"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+tooltip_text = "Heal
+Add 50 hp to hero"
+theme = ExtResource("5_ujllh")
+theme_type_variation = &"AbilityButton"
+disabled = true
+toggle_mode = true
+button_mask = 0
+button_group = ExtResource("3_uhpvf")
+icon = ExtResource("4_vyd53")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 397.0
+offset_bottom = 152.0
+
+[node name="VillagersAlive" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_ujllh")
+text = "Villagers alive: 10"
+
+[node name="HeroHealth" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_ujllh")
+text = "Health: 200"
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1864.0
+offset_top = 266.0
+offset_right = 2211.0
+offset_bottom = 814.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -267.0
+offset_bottom = 267.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("5_ujllh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_ujllh")
+
+[node name="LMC" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/LMC"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/LMC/CenterContainer"]
+custom_minimum_size = Vector2(35, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("8_7qkxb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/LMC"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- sword slash"
+vertical_alignment = 1
+
+[node name="RMC" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/RMC"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/RMC/CenterContainer"]
+custom_minimum_size = Vector2(35, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("8_7qkxb")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/RMC"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- use ability"
+vertical_alignment = 1
+
+[node name="Move" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Move"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Move/CenterContainer"]
+custom_minimum_size = Vector2(65, 45)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("9_am1v6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Move"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- move"
+vertical_alignment = 1
+
+[node name="Sprint" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Sprint"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Sprint/CenterContainer"]
+custom_minimum_size = Vector2(45, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_hhfi0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Sprint"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- sprint"
+vertical_alignment = 1
+
+[node name="Ability" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Ability"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Ability/CenterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("11_5vdpo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Ability"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- select ability"
+vertical_alignment = 1
+
+[node name="Pause" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Pause"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Pause/CenterContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_1p1gf")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/Pause"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- pause game"
+vertical_alignment = 1
+
+[node name="QuickSave" type="HBoxContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/QuickSave"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/QuickSave/CenterContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("13_rbe2c")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Controls/PanelContainer/MarginContainer/VBoxContainer/QuickSave"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 30
+text = "- quick save"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Controls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 99.5
+offset_right = 196.0
+offset_bottom = 160.5
+grow_vertical = 2
+rotation = -1.5708
+theme = ExtResource("5_ujllh")
+theme_override_font_sizes/font_size = 40
+button_mask = 0
+text = "Controls"
+
+[node name="Label" type="Label" parent="Controls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -102.5
+offset_right = 214.0
+offset_bottom = -67.5
+grow_vertical = 2
+rotation = -1.5708
+theme = ExtResource("5_ujllh")
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 25
+text = "H - show/hide"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ccdei")
+}
