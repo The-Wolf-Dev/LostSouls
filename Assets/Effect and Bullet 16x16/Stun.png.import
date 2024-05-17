@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di7kyxl7s1bn"
-path="res://.godot/imported/Tree_Emerald_4.png-b50b1181ee35c57a931606dfb7e643d1.ctex"
+uid="uid://bf6ug7i3kmjpm"
+path="res://.godot/imported/Stun.png-83809e5b0d7c923c01c149c8be3d7e94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/The Fan-tasy Tileset/Art/Trees and Bushes/Tree_Emerald_4.png"
-dest_files=["res://.godot/imported/Tree_Emerald_4.png-b50b1181ee35c57a931606dfb7e643d1.ctex"]
+source_file="res://Assets/Effect and Bullet 16x16/Stun.png"
+dest_files=["res://.godot/imported/Stun.png-83809e5b0d7c923c01c149c8be3d7e94.ctex"]
 
 [params]
 

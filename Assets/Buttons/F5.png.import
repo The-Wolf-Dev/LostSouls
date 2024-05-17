@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di7kyxl7s1bn"
-path="res://.godot/imported/Tree_Emerald_4.png-b50b1181ee35c57a931606dfb7e643d1.ctex"
+uid="uid://by8h457xgxfkq"
+path="res://.godot/imported/F5.png-07975918fedb8c2d32fce10910742ca5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/The Fan-tasy Tileset/Art/Trees and Bushes/Tree_Emerald_4.png"
-dest_files=["res://.godot/imported/Tree_Emerald_4.png-b50b1181ee35c57a931606dfb7e643d1.ctex"]
+source_file="res://Assets/Buttons/F5.png"
+dest_files=["res://.godot/imported/F5.png-07975918fedb8c2d32fce10910742ca5.ctex"]
 
 [params]
 

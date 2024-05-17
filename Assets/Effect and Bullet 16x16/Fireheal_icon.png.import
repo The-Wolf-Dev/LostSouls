@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di7kyxl7s1bn"
-path="res://.godot/imported/Tree_Emerald_4.png-b50b1181ee35c57a931606dfb7e643d1.ctex"
+uid="uid://bg51i8dgs1vil"
+path="res://.godot/imported/Fireheal_icon.png-a1ec3d9f27a8715b5c0f1e180270245c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/The Fan-tasy Tileset/Art/Trees and Bushes/Tree_Emerald_4.png"
-dest_files=["res://.godot/imported/Tree_Emerald_4.png-b50b1181ee35c57a931606dfb7e643d1.ctex"]
+source_file="res://Assets/Effect and Bullet 16x16/Fireheal_icon.png"
+dest_files=["res://.godot/imported/Fireheal_icon.png-a1ec3d9f27a8715b5c0f1e180270245c.ctex"]
 
 [params]
 
