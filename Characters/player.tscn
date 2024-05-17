@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cqlqlq4dv06h2"]
+[gd_scene load_steps=56 format=3 uid="uid://cqlqlq4dv06h2"]
 
 [ext_resource type="Texture2D" uid="uid://m6dt7w0yjnrh" path="res://Assets/The Fan-tasy Tileset/Art/Characters/Character/Character_Walk.png" id="1_d1t6c"]
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_l54b2"]
@@ -7,6 +7,120 @@
 [ext_resource type="Texture2D" uid="uid://co2yb2v760wa4" path="res://Assets/Effect and Bullet 16x16/Fireshield.png" id="5_3fsyf"]
 [ext_resource type="Texture2D" uid="uid://dcotkfv2f4sw0" path="res://Assets/Effect and Bullet 16x16/Fireheal.png" id="5_ev4l7"]
 [ext_resource type="Texture2D" uid="uid://bf6ug7i3kmjpm" path="res://Assets/Effect and Bullet 16x16/Stun.png" id="7_h1gq1"]
+
+[sub_resource type="Animation" id="Animation_i6ao5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fireshield:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vy2g7"]
+resource_name = "fireshield"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fireshield:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sh33"]
+_data = {
+"RESET": SubResource("Animation_i6ao5"),
+"fireshield": SubResource("Animation_vy2g7")
+}
+
+[sub_resource type="Animation" id="Animation_ap4j8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0duk2"]
+resource_name = "heal"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heal:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdcpx"]
+_data = {
+"RESET": SubResource("Animation_ap4j8"),
+"heal": SubResource("Animation_0duk2")
+}
+
+[sub_resource type="Animation" id="Animation_7voxf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fuwol"]
+resource_name = "stun"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oh8jh"]
+_data = {
+"RESET": SubResource("Animation_7voxf"),
+"stun": SubResource("Animation_fuwol")
+}
 
 [sub_resource type="Animation" id="Animation_wur2h"]
 length = 0.001
@@ -45,76 +159,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [18]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Effects/Heal:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Effects/Fireshield:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Effects/Stun:frame")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_p515f"]
-resource_name = "fireshield"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Effects/Fireshield:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_w30r7"]
-resource_name = "heal"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Effects/Heal:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_b4blk"]
@@ -321,28 +365,9 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15, 16, 17]
 }
 
-[sub_resource type="Animation" id="Animation_yxkj1"]
-resource_name = "stun"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Effects/Stun:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v5ans"]
 _data = {
 "RESET": SubResource("Animation_wur2h"),
-"fireshield": SubResource("Animation_p515f"),
-"heal": SubResource("Animation_w30r7"),
 "idle_down": SubResource("Animation_b4blk"),
 "idle_left": SubResource("Animation_ls8to"),
 "idle_right": SubResource("Animation_2y6pi"),
@@ -354,8 +379,7 @@ _data = {
 "slash_down": SubResource("Animation_q5lsf"),
 "slash_left": SubResource("Animation_d2r8d"),
 "slash_right": SubResource("Animation_282hb"),
-"slash_up": SubResource("Animation_hshpd"),
-"stun": SubResource("Animation_yxkj1")
+"slash_up": SubResource("Animation_hshpd")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jo0yv"]
@@ -467,6 +491,7 @@ size = Vector2(9.58337, 25.8333)
 [node name="Player" type="CharacterBody2D" groups=["ForSaving", "Player"]]
 z_index = 1
 scale = Vector2(1.2, 1.2)
+collision_mask = 126
 script = ExtResource("1_l54b2")
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -516,6 +541,21 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_h1gq1")
 hframes = 6
 
+[node name="FireshieldAnimationPlayer" type="AnimationPlayer" parent="Effects"]
+libraries = {
+"": SubResource("AnimationLibrary_2sh33")
+}
+
+[node name="HealAnimationPlayer" type="AnimationPlayer" parent="Effects"]
+libraries = {
+"": SubResource("AnimationLibrary_fdcpx")
+}
+
+[node name="StunAnimationPlayer" type="AnimationPlayer" parent="Effects"]
+libraries = {
+"": SubResource("AnimationLibrary_oh8jh")
+}
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
 position = Vector2(0, -10.8333)
@@ -547,6 +587,8 @@ default_color = Color(1, 1, 1, 0)
 position = Vector2(13, 0)
 
 [node name="SlashArea2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlashArea2D"]
@@ -582,7 +624,9 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[connection signal="animation_finished" from="AnimationPlayer/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[node name="SlashTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [connection signal="body_entered" from="SlashArea2D" to="." method="_on_slash_area_2d_body_entered"]
 [connection signal="timeout" from="Timers/FireballCooldownTimer" to="." method="_on_fireball_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/FirewaveCooldownTimer" to="." method="_on_firewave_cooldown_timer_timeout"]
@@ -590,3 +634,4 @@ one_shot = true
 [connection signal="timeout" from="Timers/FireshieldCooldownTimer" to="." method="_on_fireshield_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/HealCooldownTimer" to="." method="_on_heal_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="Timers/SlashTimer" to="." method="_on_slash_timer_timeout"]

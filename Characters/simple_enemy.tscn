@@ -234,6 +234,8 @@ states/Walk/position = Vector2(648, 100.667)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xbt2u"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_0d6hx"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_nmqq4"), "Walk", "End", SubResource("AnimationNodeStateMachineTransition_5usmv")]
 
 [node name="SimpleEnemy" type="CharacterBody2D" groups=["Enemy", "ForSaving"]]
+collision_layer = 2
+collision_mask = 127
 script = ExtResource("1_gtxbk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

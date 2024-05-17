@@ -30,6 +30,9 @@ enum Abilities {
 }
 
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
+@onready var heal_animation_player = $Effects/HealAnimationPlayer as AnimationPlayer
+@onready var fireshield_animation_player = $Effects/FireshieldAnimationPlayer as AnimationPlayer
+@onready var stun_animation_player = $Effects/StunAnimationPlayer as AnimationPlayer
 @onready var animation_tree = $AnimationPlayer/AnimationTree as AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var sprites = $Sprites as Node2D
@@ -41,6 +44,7 @@ enum Abilities {
 @onready var fireshield_cooldown_timer = $Timers/FireshieldCooldownTimer as Timer
 @onready var heal_cooldown_timer = $Timers/HealCooldownTimer as Timer
 @onready var stun_timer = $Timers/StunTimer as Timer
+@onready var slash_timer = $Timers/SlashTimer as Timer
 @onready var fireshield_sprite = $Effects/Fireshield
 @onready var heal_sprite = $Effects/Heal
 @onready var stun_sprite = $Effects/Stun
@@ -129,6 +133,7 @@ func _input(event):
 
 
 func _ready():
+	slash_timer.wait_time = animation_player.get_animation("slash_down").length
 	animation_tree.active = true
 	update_slash_area_rotation()
 	update_animation()
@@ -220,6 +225,7 @@ func slash():
 	is_slashing = true
 	slash_area.monitoring = true
 	update_slash_area_rotation()
+	slash_timer.start()
 	update_state_machine(states[Slash])
 
 
@@ -238,11 +244,11 @@ func shoot_firewave(pos, dir):
 
 func play_fireshield_animation():
 	fireshield_sprite.visible = true
-	animation_player.play("fireshield")
+	fireshield_animation_player.play("fireshield")
 
 func stop_fireshield_animation():
 	fireshield_sprite.visible = false
-	animation_player.stop()
+	fireshield_animation_player.stop()
 
 func apply_fireshield():
 	if can_apply_fireshield:
@@ -254,11 +260,11 @@ func apply_fireshield():
 
 func play_heal_animation():
 	heal_sprite.visible = true
-	animation_player.play("heal")
+	heal_animation_player.play("heal")
 
 func stop_heal_animation():
 	heal_sprite.visible = false
-	animation_player.stop()
+	heal_animation_player.stop()
 
 func heal():
 	if can_heal:
@@ -278,13 +284,14 @@ func update_marker_rotation():
 
 
 func _on_slash_area_2d_body_entered(body):
-	if body.has_method("take_damage") and body != self:
+	if body.has_method("take_damage"):
 		body.take_damage(slash_damage)
 
 
 func _on_animation_tree_animation_finished(anim_name):
-	#print(anim_name + " finished")
+	print(anim_name + " finished")
 	if "slash" in anim_name:
+		#print(anim_name + " finished")
 		is_slashing = false
 		slash_area.monitoring = false
 
@@ -326,11 +333,11 @@ func select_heal():
 
 func play_stun_animation():
 	stun_sprite.visible = true
-	animation_player.play("stun")
+	stun_animation_player.play("stun")
 
 func stop_stun_animation():
 	stun_sprite.visible = false
-	animation_player.stop()
+	stun_animation_player.stop()
 
 func stun():
 	if not is_shielded and is_physics_processing():
@@ -357,3 +364,9 @@ func unlock_fireshield():
 
 func unlock_heal():
 	can_heal = true
+
+
+func _on_slash_timer_timeout():
+	is_slashing = false
+	slash_area.monitoring = false
+

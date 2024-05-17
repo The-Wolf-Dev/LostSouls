@@ -9,7 +9,8 @@ var is_triggered = false
 var target_body = null
 var can_shoot_fireball = true
 
-func _physics_process(_delta):
+
+func _process(_delta):
 	if is_triggered and target_body != null:
 		shoot_fireball(target_body)
 
@@ -34,18 +35,16 @@ func shoot_fireball(body):
 		can_shoot_fireball = false
 
 func _on_fireball_area_2d_body_entered(body):
-	if body.is_in_group("Player"):
-		update_state_machine(states[Idle])
-		set_physics_process(false)
-		is_triggered = true
-		target_body = body
+	update_state_machine(states[Idle])
+	set_physics_process(false)
+	is_triggered = true
+	target_body = body
 
 
-func _on_fireball_area_2d_body_exited(body):
-	if body.is_in_group("Player"):
-		set_physics_process(true)
-		is_triggered = false
-		target_body = null
+func _on_fireball_area_2d_body_exited(_body):
+	set_physics_process(true)
+	is_triggered = false
+	target_body = null
 
 
 func _on_fireball_cooldown_timer_timeout():
