@@ -1,8 +1,0 @@
-1.	Slash animation: can be easily reproduced by setting animation duration to 0.6
-	and clicking very fast on left mouse button. UPD Fixed
-
-2.	Saves: sometimes when trying to save, something goes wrong and save file remains
-	empty. UPD Fixed
-
-3.	When modulate (opacity) was added to Player/Effects/Heal in AnimPlayer, Heal
-	changed its color to black
