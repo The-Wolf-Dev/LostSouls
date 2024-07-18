@@ -46,7 +46,8 @@ var spawns_pos : Array[Vector2]
 @onready var house_areas = $HouseAreas
 @onready var enemies = $Enemies
 @onready var spawns = $EnemySpawnPositions
-@onready var wait_for_timer = $Timers/WaitForTimer as Timer
+@onready var timers = $Timers
+
 
 const fireball_scene = preload(\"res://Objects/fireball.tscn\")
 const firewave_scene = preload(\"res://Objects/firewave.tscn\")
@@ -126,11 +127,13 @@ func start_game():
 	start_waves()
 
 func pause_game():
-	wait_for_timer.paused = true
+	#wait_for_timer.paused = true
+	pause_timers()
 	get_tree().paused = true
 
 func resume_game():
-	wait_for_timer.paused = false
+	#wait_for_timer.paused = false
+	resume_timers()
 	get_tree().paused = false
 
 func open_pause_menu():
@@ -347,10 +350,11 @@ func init_spawns_array():
 		spawns_pos.append(spawn.global_position)
 
 func wait_for(seconds : float):
-	wait_for_timer.wait_time = seconds
-	if wait_for_timer.is_inside_tree():
-		wait_for_timer.start()
-		await wait_for_timer.timeout
+	var timer = create_timer(seconds)
+	if timer.is_inside_tree():
+		timer.start()
+		await timer.timeout
+		timer.queue_free()
 	else:
 		print(Time.get_datetime_string_from_system() + \": timer is not inside scene\")
 
@@ -453,6 +457,24 @@ func save():
 	}
 	
 	return data_to_save
+
+func pause_timers():
+	var timers_list = timers.get_children()
+	for timer in timers_list:
+		timer.paused = true
+
+func resume_timers():
+	var timers_list = timers.get_children()
+	for timer in timers_list:
+		timer.paused = false
+
+func create_timer(duration_seconds: float):
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = duration_seconds
+	timers.add_child(timer)
+	print(\"Timer with duration \", duration_seconds, \" created\")
+	return timer
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x72sy"]
