@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=22 format=3 uid="uid://dr47g3nytmxkg"]
 
 [ext_resource type="FontFile" uid="uid://brd03th58pauo" path="res://Font/Milonga-Regular.ttf" id="1_a8bd5"]
-[ext_resource type="Texture2D" uid="uid://c0304ppnue1ir" path="res://arrow_down.png" id="1_jigx5"]
+[ext_resource type="Texture2D" uid="uid://c0304ppnue1ir" path="res://Assets/Buttons/arrow_down.png" id="1_jigx5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xa0dn"]
 
