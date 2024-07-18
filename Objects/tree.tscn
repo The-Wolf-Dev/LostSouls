@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhsuj3722p0lu"]
+
+[ext_resource type="Script" path="res://Objects/tree.gd" id="1_phsnm"]
+[ext_resource type="Texture2D" uid="uid://di7kyxl7s1bn" path="res://Assets/The Fan-tasy Tileset/Art/Trees and Bushes/Tree_Emerald_3.png" id="2_b8wdo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ht5dt"]
+radius = 4.0
+height = 20.0
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource("1_phsnm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -26.286)
+texture = ExtResource("2_b8wdo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ht5dt")

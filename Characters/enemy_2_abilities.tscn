@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxiunreishyly"]
+
+[ext_resource type="PackedScene" uid="uid://o50ohmpfmro4" path="res://Characters/enemy_1_ability.tscn" id="1_07c3n"]
+[ext_resource type="Script" path="res://Characters/enemy_2_abilities.gd" id="2_cpfcb"]
+[ext_resource type="Texture2D" uid="uid://7l36chtla7ou" path="res://Assets/character-pack-free_version/sprite/Woodman.png" id="2_mnkn0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tgk0s"]
+radius = 88.0227
+
+[node name="Enemy2Ability" instance=ExtResource("1_07c3n")]
+script = ExtResource("2_cpfcb")
+health = 200
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0.4, -7)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_mnkn0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 5)
+
+[node name="FireballArea2D" type="Area2D" parent="." index="5"]
+visible = false
+collision_layer = 64
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireballArea2D" index="0"]
+shape = SubResource("CircleShape2D_tgk0s")
+metadata/_edit_lock_ = true
+
+[node name="MarkerRotation" type="Line2D" parent="." index="6"]
+visible = false
+points = PackedVector2Array(0, 0, 13.3333, 0)
+width = 0.35
+
+[node name="Marker2D" type="Marker2D" parent="MarkerRotation" index="0"]
+position = Vector2(13, 0)
+
+[node name="Node" type="Node" parent="." index="7"]
+
+[node name="FireballCooldownTimer" type="Timer" parent="Node" index="0"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="FireballArea2D" to="." method="_on_fireball_area_2d_body_entered"]
+[connection signal="body_exited" from="FireballArea2D" to="." method="_on_fireball_area_2d_body_exited"]
+[connection signal="timeout" from="Node/FireballCooldownTimer" to="." method="_on_fireball_cooldown_timer_timeout"]

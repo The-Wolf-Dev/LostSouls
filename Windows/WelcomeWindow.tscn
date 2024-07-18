@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bucbhjwkwpbv1"]
+
+[ext_resource type="Theme" uid="uid://dr47g3nytmxkg" path="res://Themes/MainTheme.tres" id="1_0wpe0"]
+[ext_resource type="Script" path="res://Windows/WelcomeWindow.gd" id="1_u47ww"]
+
+[node name="WelcomeWindow" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_u47ww")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(900, 400)
+layout_mode = 2
+theme = ExtResource("1_0wpe0")
+
+[node name="TextContainer" type="CenterContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 309.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/TextContainer"]
+custom_minimum_size = Vector2(800, 300)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "A cossack named Blueeye arrives in a small village whose residents suffer from an evil force. They ask the Cossack for protection, and he agrees.
+
+Protect the villagers from evil creatures coming from the southern forest."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="CenterContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/Button" to="." method="_on_button_pressed"]
