@@ -19,6 +19,7 @@ texture = ExtResource("2_68246")
 position = Vector2(0, 7)
 
 [node name="StunArea2D" type="Area2D" parent="." index="4"]
+visible = false
 collision_layer = 64
 metadata/_edit_lock_ = true
 

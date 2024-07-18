@@ -20,6 +20,7 @@ texture = ExtResource("2_mnkn0")
 position = Vector2(0, 5)
 
 [node name="FireballArea2D" type="Area2D" parent="." index="5"]
+visible = false
 collision_layer = 64
 metadata/_edit_lock_ = true
 
